@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Categoria } from '../../categoria';
+import { CategoriaService } from '../../categoria-service';
 
 @Component({
   selector: 'app-menu',
@@ -8,7 +8,7 @@ import { Categoria } from '../../categoria';
   styleUrl: './menu.css',
 })
 export class Menu implements OnInit {
-  private service = inject(Categoria);
+  private service = inject(CategoriaService);
 
   public listaCategorias: any[] = [];
 

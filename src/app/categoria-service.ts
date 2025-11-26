@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class Categoria {
+export class CategoriaService {
   private http = inject(HttpClient);
   
   listar(): Observable<any[]> {
