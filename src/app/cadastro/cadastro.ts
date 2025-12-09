@@ -1,14 +1,15 @@
 import { Component, inject, Inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuarioService } from '../usuario-service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, RouterLink],
   templateUrl: './cadastro.html',
   styleUrl: './cadastro.css',
 })
+
 export class Cadastro {
   public service = inject(UsuarioService);
   public router = inject(Router);

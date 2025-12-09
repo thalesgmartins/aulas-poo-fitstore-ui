@@ -58,5 +58,8 @@
     <input formControlName="senha" type="password" id="senha" name="senha" required>
 
     <button type="submit" [disabled]="usuarioForm.invalid" class="primary" (click)="cadastrar()">Cadastrar</button>
+
+    <a [routerLink]="['/login']" class="login-link">Já tem uma conta? Faça Login!</a>
+
   </form>
 </div>

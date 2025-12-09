@@ -75,3 +75,21 @@ button.primary:hover { background: #0056b3; }
     .row { flex-direction: column; }
     .col.narrow { width: 100%; flex: 1; }
 }
+
+.login-link {
+    display: block;
+    text-align: left;
+    margin-top: 1em;
+    
+    /* Usando a cor primária do seu projeto */
+    color: #007bff; 
+    font-size: 0.95rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.login-link:hover {
+    color: #0056b3;
+    text-decoration: underline; /* Feedback visual */
+}
