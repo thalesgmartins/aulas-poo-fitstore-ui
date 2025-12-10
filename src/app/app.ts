@@ -27,7 +27,7 @@ export class App implements OnInit {
   ngOnInit(): void {
     // Verifica se o menu de navegação deve aparecer ou não
     this.router.events.pipe(
-      filter((event) => event instanceof NavigationEnd), map(event => event as NavigationEnd)).subscribe((event:NavigationEnd) => {const url = event.urlAfterRedirects; this.showMenu = !url.includes('/login') && !url.includes('/cadastro');});
+      filter((event) => event instanceof NavigationEnd), map(event => event as NavigationEnd)).subscribe((event:NavigationEnd) => {const url = event.urlAfterRedirects; this.showMenu = !url.includes('/login') && !url.includes('/cadastro') && !url.includes('/admin');});
   
     // Carrega autenticação
     this.usuarioService.checkAuthStatus().subscribe({
