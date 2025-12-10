@@ -34,3 +34,8 @@ export class UsuarioService {
     this._isLoggedIn.next(false);
   }
 }
+
+export interface AuthStatusResponse {
+  logado: string;
+  perfil: string;
+}
