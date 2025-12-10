@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, CommonModule, AsyncPipe],
+  imports: [AsyncPipe, CommonModule ],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
@@ -14,6 +14,7 @@ export class Header {
   private usuarioService = inject(UsuarioService);
 
   public isLoggedIn$: Observable<boolean> = this.usuarioService.isLoggedIn$;
+  public userRole$: Observable<string | null> = this.usuarioService.userRole$;
 
   logout() {
     this.usuarioService.logout();
