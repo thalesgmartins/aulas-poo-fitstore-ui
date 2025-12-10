@@ -1,24 +1,35 @@
+<!-- Componente do Cabeçalho do Projeto -->
 <header class="header">
-    <div class="header-content">
-      <a href="/" class="header-logo">
-        <span class="logo-text">FitStore</span>
+  <div class="header-content">
+
+    <!-- Logo do Header -->
+    <a href="/" class="header-logo">
+      <span class="logo-text">FitStore</span>
+    </a>
+
+    <!-- Barra de Pesquisa -->
+    <div class="search-bar">
+      <input type="search" placeholder="Buscar produtos, marcas..." 
+        class="search-input" 
+        aria-label="Barra de busca de produtos">
+      <button class="search-button" >🔍</button>
+    </div>
+
+    <!-- Ações do usuário -->
+    <nav class="user-actions">
+
+      <a *ngIf="(userRole$ | async) === 'ADMINISTRADOR'" href="/admin" class="action-link">Painel Admin</a>
+
+      <a *ngIf="!(isLoggedIn$ | async)" href="/login" class="action-link" >
+        👤 Login / Cadastro
       </a>
 
-      <div class="search-bar">
-        <input type="search" placeholder="Buscar produtos, marcas..." 
-               class="search-input" 
-               aria-label="Barra de busca de produtos">
-        <button class="search-button" >🔍</button>
-      </div>
-
-      <nav class="user-actions">
-        <a href="/login" class="action-link" >
-          👤 Login / Cadastro
-        </a>
-        <a href="/carrinho" class="action-link cart-link" >
-          🛒 Carrinho
-          <span class="cart-count">0</span>
-        </a>
-      </nav>
-    </div>
-  </header>
+      <a *ngIf="(isLoggedIn$ | async)" (click)="logout()" class="action-link" >Sair</a>
+      
+      <a href="/carrinho" class="action-link cart-link" >
+        🛒 Carrinho
+        <span class="cart-count">0</span>
+      </a>
+    </nav>
+  </div>
+</header>
