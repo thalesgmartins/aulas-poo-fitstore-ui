@@ -3,7 +3,7 @@
   <h1>Produtos em Destaque</h1>
       
   <div class="product-grid">
-    @for(produto of listaProdutos; track produto.id) {
+    @for(produto of produtosFiltrados; track produto.id) {
       <article class="product-card">
       
         <div class="product-image">
