@@ -1,0 +1,74 @@
+<div class="admin-container">
+  <h1>Painel Administrativo</h1>
+
+  <div class="tabs">
+    <button (click)="abaAtual = 'produtos'" [class.active]="abaAtual === 'produtos'">Produtos</button>
+    <button (click)="abaAtual = 'marcas'" [class.active]="abaAtual === 'marcas'">Marcas</button>
+    <button (click)="abaAtual = 'categorias'" [class.active]="abaAtual === 'categorias'">Categorias</button>
+  </div>
+
+  <div *ngIf="abaAtual === 'marcas'" class="painel">
+    <h3>Nova Marca</h3>
+    <div class="form-inline">
+      <input type="text" [(ngModel)]="novaMarca.descricao" placeholder="Nome da Marca">
+      <button (click)="salvarMarca()">Adicionar</button>
+    </div>
+    
+    <h3>Lista</h3>
+    <ul>
+      <li *ngFor="let m of listaMarcas">
+        {{ m.id }} - {{ m.descricao }}
+        <button (click)="deletarMarca(m.id)" class="btn-delete">X</button>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="abaAtual === 'categorias'" class="painel">
+    <h3>Nova Categoria</h3>
+    <div class="form-inline">
+      <input type="text" [(ngModel)]="novaCategoria.descricao" placeholder="Nome da Categoria">
+      <button (click)="salvarCategoria()">Adicionar</button>
+    </div>
+
+    <ul>
+      <li *ngFor="let c of listaCategorias">
+        {{ c.id }} - {{ c.descricao }}
+        <button (click)="deletarCategoria(c.id)" class="btn-delete">X</button>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="abaAtual === 'produtos'" class="painel">
+    <h3>Novo Produto</h3>
+    <div class="form-grid">
+      <input type="text" [(ngModel)]="novoProduto.nome" placeholder="Nome">
+      <input type="text" [(ngModel)]="novoProduto.descricao" placeholder="Descrição">
+      <input type="number" [(ngModel)]="novoProduto.preco" placeholder="Preço">
+      <input type="number" [(ngModel)]="novoProduto.quantidadeEstoque" placeholder="Estoque">
+      
+      <select [(ngModel)]="novoProduto.marca">
+        <option [ngValue]="null">Selecione Marca...</option>
+        <option *ngFor="let m of listaMarcas" [ngValue]="m">{{ m.descricao }}</option>
+      </select>
+
+      <select [(ngModel)]="novoProduto.categoria">
+        <option [ngValue]="null">Selecione Categoria...</option>
+        <option *ngFor="let c of listaCategorias" [ngValue]="c">{{ c.descricao }}</option>
+      </select>
+
+      <input type="file" (change)="onFileSelected($event)">
+      
+      <button (click)="salvarProduto()" class="btn-save">Salvar Produto</button>
+    </div>
+
+    <h3>Lista de Produtos</h3>
+    <table>
+        <tr *ngFor="let p of listaProdutos">
+            <td>{{ p.id }}</td>
+            <td>{{ p.nome }}</td>
+            <td>R$ {{ p.preco }}</td>
+            <td>{{ p.quantidadeEstoque }} un.</td>
+        </tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,227 @@
+/* src/app/admin/admin.css */
+
+:host {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f4f7fa; /* Fundo levemente cinza para destacar o card */
+    min-height: 80vh;
+}
+
+/* Container Principal (Estilo Card igual ao Login) */
+.admin-container {
+    max-width: 1100px; /* Mais largo que o login para caber as tabelas */
+    margin: 0 auto;
+    padding: 32px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* Títulos */
+h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 16px;
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: #007bff; /* Azul padrão */
+    margin-top: 32px;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+/* --- SISTEMA DE ABAS (TABS) --- */
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.tabs button {
+    background: none;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.tabs button:hover {
+    color: #007bff;
+    background-color: #f9fbff;
+}
+
+.tabs button.active {
+    color: #007bff;
+    border-bottom-color: #007bff;
+}
+
+/* --- FORMULÁRIOS (Mesmo estilo do Login) --- */
+input[type="text"],
+input[type="number"],
+select,
+input[type="file"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    background: #fafafa;
+    font-size: 0.95rem;
+    color: #333;
+    box-sizing: border-box; /* Importante para não quebrar layouts */
+    transition: border-color 0.2s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #007bff;
+    background: #fff;
+}
+
+/* Layout de Formulário em Linha (para Marcas/Categorias) */
+.form-inline {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    background: #fdfdfd;
+    padding: 20px;
+    border: 1px dashed #ddd;
+    border-radius: 8px;
+}
+
+/* Layout de Grade para Produtos (Responsivo) */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Responsivo */
+    gap: 16px;
+    background: #fdfdfd;
+    padding: 24px;
+    border: 1px dashed #ddd;
+    border-radius: 8px;
+    align-items: end; /* Alinha botões com inputs */
+}
+
+/* --- BOTÕES --- */
+button {
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s;
+}
+
+/* Botão de Salvar/Adicionar (Igual ao Login) */
+.btn-save {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 700;
+    height: 42px; /* Altura fixa para alinhar com inputs */
+    white-space: nowrap;
+}
+
+.btn-save:hover {
+    background-color: #0056b3;
+}
+
+/* Botão de Deletar (Vermelho discreto) */
+.btn-delete {
+    background-color: #fff0f0;
+    color: #dc3545;
+    border: 1px solid #fadbdc;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.btn-delete:hover {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+/* --- LISTAS E TABELAS --- */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+li:hover {
+    background-color: #f8f9fa;
+}
+
+/* Tabela de Produtos */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.95rem;
+}
+
+table th {
+    text-align: left;
+    padding: 12px;
+    background-color: #f1f3f5;
+    color: #555;
+    font-weight: 600;
+    border-bottom: 2px solid #ddd;
+}
+
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+table tr:hover td {
+    background-color: #f8f9fa;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 16px;
+        margin: 10px;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr; /* Em mobile, 1 coluna */
+    }
+    
+    .form-inline {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .btn-save {
+        width: 100%;
+    }
+}
