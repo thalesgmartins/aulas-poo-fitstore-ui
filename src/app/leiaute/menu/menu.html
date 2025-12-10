@@ -8,7 +8,7 @@
     
     <ul class="filter-list">
       @for(categoria of listaCategorias; track categoria.id) {
-        <li><label><input type="checkbox" > {{categoria.descricao}}</label></li>  
+        <li><label><input type="checkbox" (change)="onFilterChange($event, 'categoria', categoria.id)"> {{categoria.descricao}}</label></li>  
       }
     </ul>
   </section>
@@ -19,7 +19,7 @@
     
     <ul class="filter-list">
       @for(marca of listaMarcas; track marca.id) {
-        <li><label><input type="checkbox"> {{marca.descricao}} </label></li>
+        <li><label><input type="checkbox" (change)="onFilterChange($event, 'marca', marca.id)"> {{marca.descricao}} </label></li>
       }
     </ul>
   </section>
