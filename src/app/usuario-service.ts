@@ -31,7 +31,36 @@ export class UsuarioService {
   }
 
   logout(): void {
+    this.logoutAPI().subscribe({
+        next: () => {
+            console.log('Logout completo. Redirecionando...');
+            this.router.navigate(['/']); 
+        },
+        error: () => {
+             // Em caso de erro HTTP (ex: servidor caiu), ainda garanta que o estado local foi limpo e redirecione
+             this.router.navigate(['/']);
+        }
+    });
+  }
+
+  logoutAPI(): Observable<any> {
+    return this.http.post(`${this.API_URL}/usuarios/logout`, null, {
+        withCredentials: true
+    }).pipe(
+        // Após o sucesso (o cookie foi destruído no navegador)
+        tap(() => {
+            this._isLoggedIn.next(false); // Limpa o estado local
+            this._userRole.next(null);
+            // Poderia navegar aqui, mas vamos deixar no componente
+        }),
+        catchError((err) => {
+            // Se o logout falhar (o cookie já expirou ou foi inválido), ainda assim limpe o estado local
     this._isLoggedIn.next(false);
+            this._userRole.next(null);
+            // Não precisa de throwError aqui, pois o logout deve sempre tentar limpar o estado local
+            return err;
+        })
+    );
   }
 }
 
